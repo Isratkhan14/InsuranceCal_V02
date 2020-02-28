@@ -33,7 +33,7 @@ public class Exc_1 {
 		
 		String ExpectedUrl = dr.getCurrentUrl();
 		System.out.println(ExpectedUrl);
-		if(ExpectedUrl==ActualUrl) {
+		if(ExpectedUrl.equalsIgnoreCase(ActualUrl)) {
 			System.out.println("Correct Url---> Test Passed");
 		} else
 		    System.out.println("Url did not match---> Test Failed");
