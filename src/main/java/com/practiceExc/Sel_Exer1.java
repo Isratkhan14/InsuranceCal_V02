@@ -18,9 +18,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Sel_Exer1 {
 	
-	static String ActualUrl = "http://services.smartbear.com/samples/TestComplete14/smartstore/";
-   @Test
-	public static void main(String[] args) throws Exception {
+	 String ActualUrl = "http://services.smartbear.com/samples/TestComplete14/smartstore/";
+   
+	@Test
+	 public void mainmethod() throws Exception {
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver dr = new ChromeDriver(); //running with chrome browser
@@ -40,30 +41,33 @@ public class Sel_Exer1 {
 		
 		Thread.sleep(1000);
 	
-		WebElement day = dr.findElement(By.id("//select[@name='DateOfBirthDay']"));
-				day.click();
-		selectFromDropDown(day,"13"); // day
-		WebElement month=dr.findElement(By.id("//select[@name='DateOfBirthMonth']"));
-		selectFromDropDown(month,"August");  //month
-		WebElement year = dr.findElement(By.id("//select[@name='DateOfBirthYear']"));
+		WebElement day = dr.findElement(By.name("DateOfBirthDay"));
+	    selectFromDropDown(day,"13"); // day
+	    
+		WebElement month=dr.findElement(By.name("DateOfBirthMonth"));
+		selectFromDropDown(month,"8");  //month
+		
+		WebElement year = dr.findElement(By.name("DateOfBirthYear"));
 		selectFromDropDown(year,"1989");// year
 		
 		
-		dr.findElement(By.xpath("//input[@id='Email']")).sendKeys("khisrat12@gmail.com");  //Email
-		dr.findElement(By.xpath(" //input[@id='Username']")).sendKeys("thisisme1");  //UserName
-		dr.findElement(By.xpath("//input[@id='Password']")).sendKeys("thisisme242");  //Password
-		dr.findElement(By.xpath(" //input[@id='ConfirmPassword']")).sendKeys("thisisme242");  //Confirmed password
+		dr.findElement(By.xpath("//input[@id='Email']")).sendKeys("khisrat112@gmail.com");  //Email
+		dr.findElement(By.xpath(" //input[@id='Username']")).sendKeys("thisisme11");  //UserName
+		dr.findElement(By.xpath("//input[@id='Password']")).sendKeys("thisisme2422");  //Password
+		dr.findElement(By.xpath(" //input[@id='ConfirmPassword']")).sendKeys("thisisme2422");  //Confirmed password
 		dr.findElement(By.xpath("//input[@id='Company']")).sendKeys("BeautifulGoods & Co.");  //Company name
 		dr.findElement(By.xpath("//input[@id='Newsletter']")).click();  //NewsLetter
 		dr.findElement(By.xpath("//button[@name='register-button']")).click();
 		//String expected ="Your registration completed";
+		
+		
 		String expected =dr.findElement(By.xpath(" //p[@class='section-body']")).getText();
 
 		Assert.assertEquals("Your registration completed", expected);
 		System.out.println("Test passed");
 	}
 	
-	public static void  selectFromDropDown(WebElement element, String value) {
+	public  void  selectFromDropDown(WebElement element, String value) {
 		Select st =new Select(element);
 		st.selectByValue(value);
 	}
