@@ -17,15 +17,15 @@ public class Exc_1_with_method {
 	{
 		if (DriverName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			WebDriver dr = new ChromeDriver();
+			 dr = new ChromeDriver();
 			}
 		else if (DriverName.equalsIgnoreCase("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			WebDriver dr = new FirefoxDriver();
+			 dr = new FirefoxDriver();
 			}
 		else if (DriverName.equalsIgnoreCase("ie")) {
 			WebDriverManager.iedriver().setup();
-			WebDriver dr = new InternetExplorerDriver();
+			 dr = new InternetExplorerDriver();
 			}
 	
 	}
