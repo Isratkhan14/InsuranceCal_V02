@@ -65,6 +65,8 @@ public class Sel_Exer1 {
 
 		Assert.assertEquals("Your registration completed", expected);
 		System.out.println("Test passed");
+		
+		dr.close();
 	}
 	
 	public  void  selectFromDropDown(WebElement element, String value) {
