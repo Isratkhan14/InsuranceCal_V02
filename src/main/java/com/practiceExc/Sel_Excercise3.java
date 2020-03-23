@@ -50,7 +50,7 @@ public class Sel_Excercise3 {
 
 		// reading and printing the items from dashboard
 
-		List<WebElement> listofitems = dr.findElements(By.tagName("a"));
+		List<WebElement> listofitems = dr.findElements(By.xpath("//ul[@class='page-sidebar-menu']/li/a"));
 
 		for (WebElement el : listofitems) {
 
@@ -60,10 +60,6 @@ public class Sel_Excercise3 {
 
 			System.out.println(st);
 
-			if (st.equalsIgnoreCase("qdPM Extended")) {
-
-				break;
-			}
 
 		}
 
