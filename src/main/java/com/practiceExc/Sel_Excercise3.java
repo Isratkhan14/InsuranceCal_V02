@@ -39,7 +39,7 @@ public class Sel_Excercise3 {
 
 	}
 
-	@Test(priority = 1)
+	@Test
 	public void mainMethod() throws Exception {
 
 		// 2nd page
@@ -55,7 +55,9 @@ public class Sel_Excercise3 {
 		for (WebElement el : listofitems) {
 
 			String st = el.getText();
-
+			
+			Assert.assertTrue(true,st);
+		
 			System.out.println(st);
 
 			if (st.equalsIgnoreCase("qdPM Extended")) {
@@ -64,22 +66,40 @@ public class Sel_Excercise3 {
 			}
 
 		}
+		
+		// clicking on the AddTask button
+				dr.findElement(By.xpath("//*[@id=\"userReports2\"]/div/table/tbody/tr/td/table/tbody/tr/td[1]/button")).click();
+
+				// New Task form opened
+
+				WebElement project = dr.findElement(By.name("form_projects_id")); //Selecting project
+				JavascriptExecutor js = (JavascriptExecutor) dr;
+				js.executeScript("arguments[0].click();", project);
+				Thread.sleep(3000);
+				selectFromDropDown(project, "1");
+				Thread.sleep(3000);
+
+				//JavascriptExecutor js1 = (JavascriptExecutor) dr;
+				WebElement type = dr.findElement(By.xpath("//*[@id=\"tasks_tasks_type_id\"]")); // Type
+
+				js.executeScript("arguments[0].click();", type);
+
+				selectFromDropDown(type, "3");
+
+				dr.findElement(By.name("tasks[name]")).sendKeys("Israt");// Name
+
+				Thread.sleep(3000);
+				//JavascriptExecutor js2 = (JavascriptExecutor) dr;
+				WebElement status = dr.findElement(By.xpath("//*[@id=\"tasks_tasks_status_id\"]")); // Status
+				js.executeScript("arguments[0].click();", status);
+				selectFromDropDown(status, "8");
+
 
 	}
 
-	@Test(priority = 2)
-	public void varification_Of_DashboardIteam() {
+	
 
-		// Verification any item from the dashboard item
-
-		WebElement config = dr.findElement(By.xpath("//span[contains(text(),'Configuration')]"));
-		String st = config.getText();
-
-		Assert.assertEquals(st, "Configuration");
-		System.out.println("One of the dashboard link :)" + st);
-	}
-
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void AddTaskForm() throws Exception {
 
 		// clicking on the AddTask button
